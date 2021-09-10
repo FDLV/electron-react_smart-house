@@ -4,5 +4,5 @@ my experiments with rightech.io<br/>
 <br/>
 <br/>
 <br/>
-Чтобы скачать, нажмите "Download ZIP"
+Чтобы скачать, нажмите "Download ZIP"<br/>
 ![изображение](https://user-images.githubusercontent.com/52961821/132899361-d6e0ee49-207f-4a54-97f9-08dd49ad6c85.png)
