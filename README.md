@@ -1,4 +1,8 @@
 # electron-react_smart-house
 my experiments with rightech.io<br/>
 [Скачать](https://youtu.be/dQw4w9WgXcQ)<br/>
-![изображение](https://user-images.githubusercontent.com/52961821/132899152-374a5080-c858-4493-821b-d18ec1a1c71c.png)
+<br/>
+<br/>
+<br/>
+<br/>
+![изображение](https://user-images.githubusercontent.com/52961821/132899361-d6e0ee49-207f-4a54-97f9-08dd49ad6c85.png)
