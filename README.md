@@ -1,3 +1,3 @@
 # electron-react_smart-house
 my experiments with rightech.io<br/>
-[Скачать](https://github.com/FDLV/electron-react_smart-house)
+[Скачать](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
