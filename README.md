@@ -13,6 +13,7 @@ my experiments with rightech.io<br/>
 5. Распаковываем в папку архив с кодом, который вы скачали, и открываем эту папку с помощью Visual Code
 6. В папке создаём файл с названием ".env" (без кавычек) и в него записываем "BROWSER=none" (без кавычек)
 7. В Visual Code нажимаем Вид->Терминал
-8. В терминале пишем "npm install" (без кавычек)<br/>
+![изображение](https://user-images.githubusercontent.com/52961821/132914834-5bafa0ab-1449-458b-a344-e75cf8d0794a.png)
+8. В терминале пишем "npm install" (без кавычек)
 ![изображение](https://user-images.githubusercontent.com/52961821/132913822-ef017cf3-422e-4ee2-854c-c42857f87f24.png)<br/>
-9. В терминале пишем "npm run go" (без кавычек)
+10. В терминале пишем "npm run go" (без кавычек)
