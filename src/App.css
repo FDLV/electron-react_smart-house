@@ -16,3 +16,18 @@
   height: 80px;
   background: lightskyblue;
 }
+
+.Blink {
+  -webkit-animation: Blink 3s linear infinite;
+  animation: Blink 3s linear infinite;
+}
+@-webkit-keyframes Blink {
+  0% { color: rgba(34, 34, 34, 1); }
+  50% { color: rgba(34, 34, 34, 0); }
+  100% { color: rgba(34, 34, 34, 1); }
+}
+@keyframes Blink {
+  0% { color: rgba(34, 34, 34, 1); }
+  50% { color: rgba(34, 34, 34, 0); }
+  100% { color: rgba(34, 34, 34, 1); }
+}

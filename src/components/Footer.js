@@ -1,11 +1,11 @@
 import React from 'react';
 
 const MainComponent = {
-    background: "lightyellow",
     height: "32px",
     padding: "10px",
     fontSize: "24px",
-    textAlign: "center"
+    textAlign: "center",
+    background: "#F2FAFF"
 }
 
 class Footer extends React.Component {
