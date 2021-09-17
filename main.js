@@ -1,6 +1,39 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow} = require('electron')
 const path = require('path')
+const axios = require('axios');
+
+const express = require("express");
+const appEX = express();
+const cors = require("cors");
+const { response } = require('express');
+
+appEX.use(cors());
+appEX.use(express.json());
+
+//routes
+
+appEX.post("/", async(req, res) => {
+      const { login, password } = req.body
+      console.log(login)
+      console.log(password)
+      axios.defaults.headers.common['Accept'] = 'application/json'
+      axios.post(`https://dev.rightech.io/api/v1/auth/token`, {
+        login: login,
+        password: password
+      }).then(response => {
+        console.log(response.data)
+        res.send(response)
+      }).catch(error => {
+        console.log(error)
+      res.send(error.message)
+    })
+})
+
+appEX.listen(5000, () =>{
+  console.log("server has started on port 5000");
+});
+
 
 function createWindow () {
   // Create the browser window.

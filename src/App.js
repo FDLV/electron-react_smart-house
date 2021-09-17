@@ -4,6 +4,7 @@ import Header from "./components/Header"
 import Main from "./components/Main"
 import Footer from "./components/Footer"
 
+
 const ConnectionError = {
   textAlign: "center",
   height: "85px",
@@ -38,14 +39,14 @@ const AuthForm = {
   alignItems: "center",
 }
 
-const Login = {
+const LoginStyle = {
   margin: "25vh 10px 10px 10px",
   width: "300px",
   height: "30px",
   fontSize: "16px"
 }
 
-const Password = {
+const PasswordStyle = {
   margin: "0 10px 20px 10px",
   width: "300px",
   height: "30px",
@@ -61,6 +62,30 @@ class App extends React.Component {
     this.ClickDown = this.ClickDown.bind(this)
     this.ClickUp = this.ClickUp.bind(this)
   }
+
+  Authorisation() {
+    const LoadData = function (url, cb) {
+      const xhr = new XMLHttpRequest()
+      xhr.open(`post`, `http://localhost:5000/`)
+      xhr.setRequestHeader('Content-Type', 'application/json')
+      xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+      
+      let login = document.getElementById("login").value;
+      let password = document.getElementById("password").value;
+
+      xhr.addEventListener(`load`, cb);
+
+      xhr.send(JSON.stringify({login: login, password: password}))
+    }
+
+    LoadData(`http://localhost:5000/`, function (e) {
+      // let token = JSON.parse(e.currentTarget)
+      // console.log(token)
+    })
+  }
+
+
+
 
   ClickDown() {
     this.setState({ ColorBackground: "orange" });
@@ -119,10 +144,10 @@ class App extends React.Component {
             АВТОРИЗАЦИЯ
           </div>
           <div style={AuthForm}>
-            <input style={Login} type="text" placeholder="Логин"/>
-            <input style={Password} type="password" placeholder="Пароль"/>
+            <input id="login" style={LoginStyle} type="text" placeholder="Логин"/>
+            <input id="password" style={PasswordStyle} type="password" placeholder="Пароль"/>
             <div className="container">
-              <button className="animated-word">ПОДКЛЮЧИТЬСЯ</button>
+              <button onClick={()=>{this.Authorisation()}} className="animated-word">ПОДКЛЮЧИТЬСЯ</button>
             </div>            
           </div>          
         </div>
