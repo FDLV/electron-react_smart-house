@@ -61,14 +61,99 @@ class App extends React.Component {
 
     this.ClickDown = this.ClickDown.bind(this)
     this.ClickUp = this.ClickUp.bind(this)
+    this.Authorisation = this.Authorisation.bind(this)
+    this.CheckToken = this.CheckToken.bind(this)
+
+  }
+  
+  componentDidMount() {
+    this.interval = setInterval(() => {
+      let self = this
+    console.log(localStorage.getItem('token'))
+    
+    if (localStorage.getItem('token') !== null) {
+      
+      const GetResult = function (url, cb) {
+        const xhr = new XMLHttpRequest()
+        xhr.open(`post`, `http://localhost:5000/object`)
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.setRequestHeader('Access-Control-Allow-Origin', 'dev.rightech.io');
+          
+        xhr.addEventListener(`load`, cb);
+  
+        xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
+      }
+  
+      GetResult(`http://localhost:5000/object`, function (em) {
+        console.log("Ответ перед рендерингом")
+        console.log(em.currentTarget.responseText)
+
+        if (em.currentTarget.responseText === "true") {
+          self.setState({ auth: true });
+
+        }
+        else {
+          localStorage.setItem('token', "")
+          self.setState({ auth: false });
+
+        }
+
+      })
+    } else {
+      localStorage.setItem('token', "")
+      self.setState({ auth: false });
+
+    }
+    }, 1000);    
+  }
+
+  componentDidUnmount() {
+    clearInterval(this.interval);
+  }
+
+  CheckToken() {
+    let self = this
+    if (localStorage.getItem('token') !== null) {
+
+      const GetResult = function (url, cb) {
+        const xhr = new XMLHttpRequest()
+        xhr.open(`post`, `http://localhost:5000/object`)
+        xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.setRequestHeader('Access-Control-Allow-Origin', 'dev.rightech.io');
+        
+        let token = localStorage.getItem('token');
+  
+        xhr.addEventListener(`load`, cb);
+  
+        xhr.send(JSON.stringify({token: token}))
+      }
+  
+      GetResult(`http://localhost:5000/object`, function (em) {
+        console.log("Ответ от функции checktoken")
+        console.log(em.currentTarget.responseText)
+        if (em.currentTarget.responseText === "true") {
+          self.setState({ auth: true });
+        }
+        else {
+          self.setState({ auth: false });
+        }
+      })
+
+    } else {
+        self.setState({ auth: false });
+        localStorage.setItem('token', "")
+    }
   }
 
   Authorisation() {
+    let self = this
+    self.CheckToken()
+    console.log(localStorage.getItem('token'))
     const LoadData = function (url, cb) {
       const xhr = new XMLHttpRequest()
       xhr.open(`post`, `http://localhost:5000/`)
       xhr.setRequestHeader('Content-Type', 'application/json')
-      xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+      xhr.setRequestHeader('Access-Control-Allow-Origin', 'dev.rightech.io');
       
       let login = document.getElementById("login").value;
       let password = document.getElementById("password").value;
@@ -79,8 +164,16 @@ class App extends React.Component {
     }
 
     LoadData(`http://localhost:5000/`, function (e) {
-      // let token = JSON.parse(e.currentTarget)
-      // console.log(token)
+      //token!!
+      console.log(e.currentTarget.responseText)
+      if (e.currentTarget.responseText === "error") {
+        localStorage.setItem('token', "")
+      }
+      else {
+        localStorage.setItem('token', "Bearer "+e.currentTarget.responseText)
+        self.setState({ auth: true });
+      }
+      //self.CheckToken()
     })
   }
 
@@ -96,6 +189,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.auth)
     if (this.state.auth) {
       if (this.state.connection) {
         return (

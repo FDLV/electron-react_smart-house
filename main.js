@@ -15,19 +15,32 @@ appEX.use(express.json());
 
 appEX.post("/", async(req, res) => {
       const { login, password } = req.body
-      console.log(login)
-      console.log(password)
       axios.defaults.headers.common['Accept'] = 'application/json'
       axios.post(`https://dev.rightech.io/api/v1/auth/token`, {
         login: login,
         password: password
       }).then(response => {
-        console.log(response.data)
-        res.send(response)
+        res.send(response.data.token)
       }).catch(error => {
-        console.log(error)
-      res.send(error.message)
+        //console.log(error)
+        res.send("error")
     })
+})
+
+appEX.post("/object", async(req, res) => {
+  const { token } = req.body
+  //console.log(123)
+  //console.log(token)
+  axios.defaults.headers.common['Accept'] = 'application/json'
+  axios.defaults.headers.common['Authorization'] = token
+
+  axios.get(`https://dev.rightech.io/api/v1/objects/613a1a5f5dab3700105b56e1`).then(response => {
+    //console.log(response.data.success)
+    res.send(response.data.success)
+  }).catch(error => {
+    //console.log(error)
+    res.send("error")
+  })
 })
 
 appEX.listen(5000, () =>{
