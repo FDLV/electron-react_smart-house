@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/Header"
 import Main from "./components/Main"
 import Footer from "./components/Footer"
+import VacuumCleanerConnectiion from "./components/VacuumCleanerConnectiion"
 
 
 const ConnectionError = {
@@ -10,18 +11,6 @@ const ConnectionError = {
   height: "85px",
   padding: "20px",
   fontSize: "32px"
-}
-
-const ReConnect = {
-  height: "calc(100vh - 125px)",
-  width: "100vw",
-  background: "#F2FAFF",
-  cursor: "pointer",
-  padding: "0",
-  margin: "0",
-
-  border: "none",
-  outline: "none"
 }
 
 const AuthText = {
@@ -57,13 +46,20 @@ class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {ColorBackground: "red", connection: true, auth: false}
+    this.state = {
+      ColorBackground: "red",
+      connection: false,
+      auth: 2,
+      dust_container_available_volume: 0,
+      battery: 0,
+      vacuum_cleaner_state: 0
+
+    }
 
     this.ClickDown = this.ClickDown.bind(this)
     this.ClickUp = this.ClickUp.bind(this)
     this.Authorisation = this.Authorisation.bind(this)
     this.CheckToken = this.CheckToken.bind(this)
-
   }
   
   componentDidMount() {
@@ -71,7 +67,7 @@ class App extends React.Component {
       let self = this
     console.log(localStorage.getItem('token'))
     
-    if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== "") {
       
       const GetResult = function (url, cb) {
         const xhr = new XMLHttpRequest()
@@ -86,34 +82,51 @@ class App extends React.Component {
   
       GetResult(`http://localhost:5000/object`, function (em) {
         console.log("Ответ перед рендерингом")
-        console.log(em.currentTarget.responseText)
+        //console.log(em.currentTarget.response)
+        if (JSON.parse(em.currentTarget.response).success === true) {
+          console.log("Токен действителен")
+          self.setState({ auth: 1 });
 
-        if (em.currentTarget.responseText === "true") {
-          self.setState({ auth: true });
+          console.log(JSON.parse(em.currentTarget.response).state.online)
+
+          if (JSON.parse(em.currentTarget.response).state.online === true) {
+            console.log("Пылесос включен")
+            self.setState({ connection: true })
+            self.setState({ battery: JSON.parse(em.currentTarget.response).state.battery });
+            self.setState({ dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume });
+            self.setState({ vacuum_cleaner_state: JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state });
+
+
+          }
+          else {
+            console.log("Пылесос выключен")
+            self.setState({ connection: false });
+          }
 
         }
         else {
+          console.log("Токен истёк")
           localStorage.setItem('token', "")
-          self.setState({ auth: false });
-
+          self.setState({ auth: 0 });
         }
 
       })
     } else {
+      console.log("Токен не существует")
       localStorage.setItem('token', "")
-      self.setState({ auth: false });
+      self.setState({ auth: 0 });
 
     }
-    }, 1000);    
+    }, 5000);    
   }
 
-  componentDidUnmount() {
+  componentWillUnmount() {
     clearInterval(this.interval);
   }
 
   CheckToken() {
     let self = this
-    if (localStorage.getItem('token') !== null) {
+    if (localStorage.getItem('token') !== "") {
 
       const GetResult = function (url, cb) {
         const xhr = new XMLHttpRequest()
@@ -130,24 +143,40 @@ class App extends React.Component {
   
       GetResult(`http://localhost:5000/object`, function (em) {
         console.log("Ответ от функции checktoken")
-        console.log(em.currentTarget.responseText)
-        if (em.currentTarget.responseText === "true") {
-          self.setState({ auth: true });
+        console.log(JSON.parse(em.currentTarget.response).success)
+
+        if (JSON.parse(em.currentTarget.response).success === true) {
+          self.setState({ auth: 1 });
+
+          if (JSON.parse(em.currentTarget.response).botEnabled === true) {
+            console.log("Пылесос включен")
+            self.setState({ connection: true });
+  
+          }
+          else {
+            console.log("Пылесос выключен")
+            self.setState({ connection: false });
+          }
+          
         }
         else {
-          self.setState({ auth: false });
+          localStorage.setItem('token', "")
+          self.setState({ auth: 0 });
         }
+
       })
 
     } else {
-        self.setState({ auth: false });
+        self.setState({ auth: 0 });
         localStorage.setItem('token', "")
     }
   }
 
   Authorisation() {
     let self = this
+    console.log("Авторизация")
     self.CheckToken()
+
     console.log(localStorage.getItem('token'))
     const LoadData = function (url, cb) {
       const xhr = new XMLHttpRequest()
@@ -164,16 +193,16 @@ class App extends React.Component {
     }
 
     LoadData(`http://localhost:5000/`, function (e) {
-      //token!!
-      console.log(e.currentTarget.responseText)
-      if (e.currentTarget.responseText === "error") {
+    console.log(JSON.parse(e.currentTarget.response).success)
+    //console.log(e.currentTarget.response.token)
+      if (JSON.parse(e.currentTarget.response).success === false) {
+        self.setState({ auth: 0 });
         localStorage.setItem('token', "")
       }
       else {
-        localStorage.setItem('token', "Bearer "+e.currentTarget.responseText)
-        self.setState({ auth: true });
+        localStorage.setItem('token', "Bearer "+JSON.parse(e.currentTarget.response).token)
+        self.setState({ auth: 1 });
       }
-      //self.CheckToken()
     })
   }
 
@@ -190,13 +219,13 @@ class App extends React.Component {
 
   render() {
     console.log(this.state.auth)
-    if (this.state.auth) {
+    if (this.state.auth === 1) {
       if (this.state.connection) {
         return (
           <div>
-            <Header />
-            <Main />
-            <Footer />
+            <Header battery={this.state.battery}/>
+            <Main vacuum_cleaner_state={this.state.vacuum_cleaner_state}/>
+            <Footer volume={this.state.dust_container_available_volume}/>
           </div>
         );
       }
@@ -204,13 +233,12 @@ class App extends React.Component {
         return (
           <div>
             <div style={ConnectionError}>
-              ОШИБКА СОЕДИНЕНИЯ. НАЖМИТЕ НА КАРТИНКУ, ЧТОБЫ ПЕРЕПОДКЛЮЧИТЬСЯ
+              ОШИБКА СОЕДИНЕНИЯ
             </div>
-            <button style={ReConnect} onMouseDown={this.ClickDown} onMouseUp={this.ClickUp}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="75vh"
-                width="inherit"
+                width="100%"
                 enableBackground="new 0 0 502 502"
                 version="1.1"
                 viewBox="-250 -200 1400 1400"
@@ -226,12 +254,11 @@ class App extends React.Component {
                   </g>
                 </g>
               </svg>
-            </button>
           </div>        
         );
       }
     }
-    else {
+    else if (this.state.auth === 0) {
       return (
         <div>
           <div style={AuthText}>
@@ -246,6 +273,13 @@ class App extends React.Component {
           </div>          
         </div>
       );
+    }
+    else if (this.state.auth === 2) {
+      return (
+        <div>
+          <VacuumCleanerConnectiion />
+        </div>
+      )
     }
   }
 }

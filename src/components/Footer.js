@@ -12,7 +12,7 @@ class Footer extends React.Component {
     render() {
       return (
           <div style={MainComponent}>
-              Осталось свободного места в пылесборнике: 235/500 мл.
+              Осталось свободного места в пылесборнике: {this.props.volume}/500 мл.
           </div>
       );
     }

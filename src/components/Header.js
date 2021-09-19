@@ -27,10 +27,10 @@ class Header extends React.Component {
                 </div>
                 <div style={RightHeader}>
                     <div>
-                        23%&nbsp;
+                        {this.props.battery}%&nbsp;
                     </div>
                     <div>
-                        <Battery />
+                        <Battery battery={this.props.battery}/>
                     </div>
                     <div>
                         

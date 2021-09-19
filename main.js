@@ -13,6 +13,7 @@ appEX.use(express.json());
 
 //routes
 
+//авторизация или получение токена
 appEX.post("/", async(req, res) => {
       const { login, password } = req.body
       axios.defaults.headers.common['Accept'] = 'application/json'
@@ -20,13 +21,17 @@ appEX.post("/", async(req, res) => {
         login: login,
         password: password
       }).then(response => {
-        res.send(response.data.token)
+        console.log(response.data)
+        res.send(response.data)
       }).catch(error => {
-        //console.log(error)
-        res.send("error")
+        console.log("--------------------------")
+        console.log(error.response.data)
+        console.log("--------------------------")
+        res.send(error.response.data)
     })
 })
 
+//проверка токена
 appEX.post("/object", async(req, res) => {
   const { token } = req.body
   //console.log(123)
@@ -35,17 +40,19 @@ appEX.post("/object", async(req, res) => {
   axios.defaults.headers.common['Authorization'] = token
 
   axios.get(`https://dev.rightech.io/api/v1/objects/613a1a5f5dab3700105b56e1`).then(response => {
-    //console.log(response.data.success)
-    res.send(response.data.success)
+    console.log(response.data)
+    res.send(response.data)
   }).catch(error => {
-    //console.log(error)
-    res.send("error")
+    console.log(error.response.data)
+    res.send(error.response.data)
   })
 })
 
 appEX.listen(5000, () =>{
   console.log("server has started on port 5000");
 });
+
+//проверка на включение скрипта
 
 
 function createWindow () {
