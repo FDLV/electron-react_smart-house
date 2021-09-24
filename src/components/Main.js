@@ -41,72 +41,25 @@ const RoundTransparentButton = {
 class Main extends React.Component {
     constructor(props) {
         super(props)
-
-        let name;
-
-        this.PlayPause = this.PlayPause.bind(this)
-        if (this.props.vacuum_cleaner_state === 1) {
-            name = "тихая уборка"
-        }
-        else if (this.props.vacuum_cleaner_state === 2) {
-            name = "стандартная уборка"
-        }
-        else if (this.props.vacuum_cleaner_state === 3) {
-            name = "интенсивная уборка"
-        }
-        else if (this.props.vacuum_cleaner_state === 4) {
-            name = "зарядка"
-        }
-        else if (this.props.vacuum_cleaner_state === 5) {
-            name = "возвращение на зарядку"
-        }
-        else if (this.props.vacuum_cleaner_state === 6) {
-            name = "выключен"
-        }
-        else {
-            name = "Zzz"
-        }
-
-        console.log(name)
-
-
-        this.state = {
-            PlayButton: false,
-            text: name
-        }
-
-
-        this.UpdateText = this.UpdateText.bind(this)
-
     }
 
 
-    UpdateText(value) {
-        this.setState({ text: value });
-    }
 
-    PlayPause() {
-        if (this.state.PlayButton) {
-            this.setState({ PlayButton: false });
-        }
-        else {
-            this.setState({ PlayButton: true });
-        }
-    }
+
     render() {
-        if (this.state.PlayButton) {
+        if (this.props.PlayButton) {
             return (
                 <div style={MainComponent}>
                     <div style={VacuumCleanerState} className="Blink">
-                        {this.state.text.toUpperCase()}
+                        {this.props.text.toUpperCase()}
                     </div>
                     <div style={VacuumCleanerButton}>
-                        <button style={RoundTransparentButton} onClick={this.PlayPause}>
-                            <MainButton mode={this.state.PlayButton}/>
+                        <button style={RoundTransparentButton} onClick={() => {this.props.PlayPause()}}>
+                            <MainButton mode={this.props.PlayButton}/>
                         </button>
                     </div>
                     <div style={ChooseState}>
-                        <SlideShow UpdateText={this.UpdateText} text={this.state.text}/>
+                        <SlideShow UpdateText={this.props.UpdateText} text={this.props.text}/>
                     </div>
                     <div style={Space}>
                     </div>
@@ -117,15 +70,15 @@ class Main extends React.Component {
             return (
                 <div style={MainComponent}>
                     <div style={VacuumCleanerState}>
-                        {this.state.text}
+                        {this.props.text}
                     </div>
                     <div style={VacuumCleanerButton}>
-                        <button style={RoundTransparentButton} onClick={this.PlayPause}>
-                            <MainButton mode={this.state.PlayButton}/>
+                        <button style={RoundTransparentButton} onClick={() => {this.props.PlayPause()}}>
+                            <MainButton mode={this.props.PlayButton}/>
                         </button>
                     </div>
                     <div style={ChooseState}>
-                        <SlideShow UpdateText={this.UpdateText} text={this.state.text}/>
+                        <SlideShow UpdateText={this.props.UpdateText} text={this.props.text}/>
                     </div>
                     <div style={Space}>
                     </div>

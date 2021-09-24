@@ -26,6 +26,8 @@ class SlideShow extends React.Component {
     }
 
     onClickLeftButton() {
+        let self = this
+        console.log("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
         if (this.props.text === "тихая уборка") {
             this.props.UpdateText("интенсивная уборка")
         }
@@ -33,7 +35,7 @@ class SlideShow extends React.Component {
             this.props.UpdateText("тихая уборка")
         }
         else if (this.props.text === "интенсивная уборка") {
-            this.props.UpdateText("стандартная уборка")
+            self.props.UpdateText("стандартная уборка")
         }
     }
 
@@ -52,7 +54,7 @@ class SlideShow extends React.Component {
     render() {
         return (
             <div style={MainComponent}>
-                <button style = {ButtonNoneStyle} onClick={this.onClickLeftButton}>
+                <button style = {ButtonNoneStyle} onClick={() => {this.onClickLeftButton()}}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     x="0"
