@@ -31,10 +31,10 @@ appEX.post("/", async(req, res) => {
     })
 })
 
+
 //проверка токена
 appEX.post("/object", async(req, res) => {
   const { token } = req.body
-  //console.log(123)
   //console.log(token)
   axios.defaults.headers.common['Accept'] = 'application/json'
   axios.defaults.headers.common['Authorization'] = token
@@ -43,7 +43,7 @@ appEX.post("/object", async(req, res) => {
     //console.log(response.data)
     res.send(response.data)
   }).catch(error => {
-    //console.log(error.response.data)
+    console.log(error)
     res.send(error.response.data)
   })
 })

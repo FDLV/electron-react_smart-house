@@ -41,8 +41,12 @@ const RoundTransparentButton = {
 class Main extends React.Component {
     constructor(props) {
         super(props)
-    }
 
+        this.state = {    
+            
+          }
+    }
+    
 
 
 
@@ -54,12 +58,12 @@ class Main extends React.Component {
                         {this.props.text.toUpperCase()}
                     </div>
                     <div style={VacuumCleanerButton}>
-                        <button style={RoundTransparentButton} onClick={() => {this.props.PlayPause()}}>
-                            <MainButton mode={this.props.PlayButton}/>
+                        <button style={RoundTransparentButton}>
+                            <MainButton PlayPause={this.props.PlayPause} UpdateText={this.props.UpdateText} SlideShowText={this.props.SlideShowText} StartTimer={this.props.StartTimer} StopTimer={this.props.StopTimer} mode={this.props.PlayButton}/>
                         </button>
                     </div>
                     <div style={ChooseState}>
-                        <SlideShow UpdateText={this.props.UpdateText} text={this.props.text}/>
+                        <SlideShow SlideShowText={this.props.SlideShowText} UpdateSlideShowText={this.props.UpdateSlideShowText}/>
                     </div>
                     <div style={Space}>
                     </div>
@@ -70,15 +74,15 @@ class Main extends React.Component {
             return (
                 <div style={MainComponent}>
                     <div style={VacuumCleanerState}>
-                        {this.props.text}
+                        {this.props.text.toUpperCase()}
                     </div>
                     <div style={VacuumCleanerButton}>
-                        <button style={RoundTransparentButton} onClick={() => {this.props.PlayPause()}}>
-                            <MainButton mode={this.props.PlayButton}/>
+                        <button style={RoundTransparentButton}>
+                            <MainButton PlayPause={this.props.PlayPause} UpdateText={this.props.UpdateText} SlideShowText={this.props.SlideShowText} StartTimer={this.props.StartTimer} StopTimer={this.props.StopTimer} mode={this.props.PlayButton}/>
                         </button>
                     </div>
                     <div style={ChooseState}>
-                        <SlideShow UpdateText={this.props.UpdateText} text={this.props.text}/>
+                        <SlideShow SlideShowText={this.props.SlideShowText} UpdateSlideShowText={this.props.UpdateSlideShowText}/>
                     </div>
                     <div style={Space}>
                     </div>

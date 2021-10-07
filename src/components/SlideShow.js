@@ -28,26 +28,26 @@ class SlideShow extends React.Component {
     onClickLeftButton() {
         let self = this
         console.log("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
-        if (this.props.text === "тихая уборка") {
-            this.props.UpdateText("интенсивная уборка")
+        if (this.props.SlideShowText === "Тихая уборка") {
+            this.props.UpdateSlideShowText("Интенсивная уборка")
         }
-        else if (this.props.text === "стандартная уборка") {
-            this.props.UpdateText("тихая уборка")
+        else if (this.props.SlideShowText === "Стандартная уборка") {
+            this.props.UpdateSlideShowText("Тихая уборка")
         }
-        else if (this.props.text === "интенсивная уборка") {
-            self.props.UpdateText("стандартная уборка")
+        else if (this.props.SlideShowText === "Интенсивная уборка") {
+            self.props.UpdateSlideShowText("Стандартная уборка")
         }
     }
 
     onClickRightButton() {
-        if (this.props.text === "тихая уборка") {
-            this.props.UpdateText("стандартная уборка")
+        if (this.props.SlideShowText === "Тихая уборка") {
+            this.props.UpdateSlideShowText("Стандартная уборка")
         }
-        else if (this.props.text === "стандартная уборка") {
-            this.props.UpdateText("интенсивная уборка")
+        else if (this.props.SlideShowText === "Стандартная уборка") {
+            this.props.UpdateSlideShowText("Интенсивная уборка")
         }
-        else if (this.props.text === "интенсивная уборка") {
-            this.props.UpdateText("тихая уборка")
+        else if (this.props.SlideShowText === "Интенсивная уборка") {
+            this.props.UpdateSlideShowText("Тихая уборка")
         }
     }
     
@@ -72,7 +72,7 @@ class SlideShow extends React.Component {
                 </button>
 
                 <div style={StatesVacuumCleaner}>
-                {this.props.text}
+                {this.props.SlideShowText}
                 </div>   
 
                 <button style = {ButtonNoneStyle} onClick={this.onClickRightButton}>
