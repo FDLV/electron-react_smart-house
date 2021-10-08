@@ -56,7 +56,8 @@ class App extends React.Component {
       text: "",
       SlideShowText: "Тихая уборка",
       PlayButton: false,
-      ButtonPressed: false
+      ButtonPressed: false,
+      charging: false
 
     }
 
@@ -70,7 +71,13 @@ class App extends React.Component {
     this.UpdateButtonPressed = this.UpdateButtonPressed.bind(this)    
     this.StopTimer = this.StopTimer.bind(this)    
     this.StartTimer = this.StartTimer.bind(this)    
+    this.UpdateCharging = this.UpdateCharging.bind(this)    
 
+  }
+
+  UpdateCharging(value) {
+    let self = this
+    self.setState({ charging: value });
   }
 
   UpdateButtonPressed() {
@@ -111,6 +118,7 @@ class App extends React.Component {
               self.setState({
                  text: "тихая уборка",
                  connection: true,
+                 charging: false,
                  battery: JSON.parse(em.currentTarget.response).state.battery,
                  dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -146,6 +154,7 @@ class App extends React.Component {
                   text: "стандартная уборка",
                   connection: true,
                   PlayButton: true,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -175,6 +184,7 @@ class App extends React.Component {
                   text: "интенсивная уборка",
                   connection: true,
                   PlayButton: true,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -203,6 +213,7 @@ class App extends React.Component {
                   text: "зарядка",
                   connection: true,
                   PlayButton: true,
+                  charging: true,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -231,6 +242,7 @@ class App extends React.Component {
                   text: "возвращение на зарядку",
                   connection: true,
                   PlayButton: false,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -259,6 +271,7 @@ class App extends React.Component {
               self.setState({
                   text: "выключен",
                   connection: true,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -349,6 +362,7 @@ class App extends React.Component {
               self.setState({
                  text: "тихая уборка",
                  connection: true,
+                 charging: false,
                  battery: JSON.parse(em.currentTarget.response).state.battery,
                  dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -381,6 +395,7 @@ class App extends React.Component {
                   text: "стандартная уборка",
                   connection: true,
                   PlayButton: true,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -410,6 +425,7 @@ class App extends React.Component {
                   text: "интенсивная уборка",
                   connection: true,
                   PlayButton: true,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -438,6 +454,7 @@ class App extends React.Component {
                   text: "зарядка",
                   connection: true,
                   PlayButton: true,
+                  charging: true,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -466,6 +483,7 @@ class App extends React.Component {
                   text: "возвращение на зарядку",
                   connection: true,
                   PlayButton: false,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -493,6 +511,7 @@ class App extends React.Component {
               self.setState({
                   text: "выключен",
                   connection: true,
+                  charging: false,
                   battery: JSON.parse(em.currentTarget.response).state.battery,
                   dust_container_available_volume: JSON.parse(em.currentTarget.response).state.dust_container_available_volume,
               })
@@ -667,8 +686,8 @@ UpdateSlideShowText(value) {
       if (this.state.connection) {
         return (
           <div>
-            <Header battery={this.state.battery}/>
-            <Main StartTimer={this.StartTimer} StopTimer={this.StopTimer} text={this.state.text} SlideShowText={this.state.SlideShowText} PlayPause={this.PlayPause} UpdateSlideShowText={this.UpdateSlideShowText} UpdateText={this.UpdateText} PlayButton={this.state.PlayButton}/>
+            <Header charging={this.state.charging} battery={this.state.battery}/>
+            <Main UpdateCharging={this.UpdateCharging} StartTimer={this.StartTimer} StopTimer={this.StopTimer} text={this.state.text} SlideShowText={this.state.SlideShowText} PlayPause={this.PlayPause} UpdateSlideShowText={this.UpdateSlideShowText} UpdateText={this.UpdateText} PlayButton={this.state.PlayButton}/>
             <Footer volume={this.state.dust_container_available_volume}/>
           </div>
         );

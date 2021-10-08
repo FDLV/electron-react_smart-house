@@ -13,6 +13,7 @@ class MainButton extends React.Component {
         let self = this
         self.props.StopTimer()
         self.props.PlayPause()
+        self.props.UpdateCharging()
         self.props.UpdateText("выключен")
         const Pause = function (url, cb) {
             const xhr = new XMLHttpRequest()
