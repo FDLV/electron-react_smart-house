@@ -253,6 +253,7 @@ class App extends React.Component {
               }
 
 
+
             }
             else if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state === 6) {
               self.setState({
@@ -308,7 +309,7 @@ class App extends React.Component {
       self.setState({ auth: 0 });
 
     }
-    }, 5000);    
+    }, 2500);    
   }
 
   StopTimer() {
@@ -369,10 +370,7 @@ class App extends React.Component {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
-              else {
-                self.setState({PlayButton: true})                
 
-              }
 
 
 
@@ -545,7 +543,7 @@ class App extends React.Component {
       self.setState({ auth: 0 });
 
     }
-    }, 5000);   
+    }, 2500);   
   }
 
   componentWillUnmount() {
