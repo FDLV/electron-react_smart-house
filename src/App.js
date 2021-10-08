@@ -117,7 +117,7 @@ class App extends React.Component {
 
               //Добавлено; надо проверить. Режимы надо отдельно запускать. Единожды
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo1 = function (url, cb) {
+                const Timer1_ChangeStateTo1 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state1`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -128,7 +128,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo1(`http://localhost:5000/state1`, function (et) {
+                Timer1_ChangeStateTo1(`http://localhost:5000/state1`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -151,7 +151,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo2 = function (url, cb) {
+                const Timer1_ChangeStateTo2 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state2`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -162,7 +162,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo2(`http://localhost:5000/state2`, function (et) {
+                Timer1_ChangeStateTo2(`http://localhost:5000/state2`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -180,7 +180,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo3 = function (url, cb) {
+                const Timer1_ChangeStateTo3 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state3`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -191,7 +191,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo3(`http://localhost:5000/state3`, function (et) {
+                Timer1_ChangeStateTo3(`http://localhost:5000/state3`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -208,7 +208,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo4 = function (url, cb) {
+                const Timer1_ChangeStateTo4 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state4`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -219,7 +219,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo4(`http://localhost:5000/state4`, function (et) {
+                Timer1_ChangeStateTo4(`http://localhost:5000/state4`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -236,7 +236,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo5 = function (url, cb) {
+                const Timer1_ChangeStateTo5 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state5`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -247,7 +247,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo5(`http://localhost:5000/state5`, function (et) {
+                Timer1_ChangeStateTo5(`http://localhost:5000/state5`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -263,7 +263,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo6 = function (url, cb) {
+                const Timer1_ChangeStateTo6 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state6`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -274,7 +274,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo6(`http://localhost:5000/state6`, function (et) {
+                Timer1_ChangeStateTo6(`http://localhost:5000/state6`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -354,7 +354,7 @@ class App extends React.Component {
 
               //Добавлено; надо проверить. Режимы надо отдельно запускать. Единожды
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo1 = function (url, cb) {
+                const Timer2_ChangeStateTo1 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state1`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -365,7 +365,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo1(`http://localhost:5000/state1`, function (et) {
+                Timer2_ChangeStateTo1(`http://localhost:5000/state1`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -388,7 +388,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo2 = function (url, cb) {
+                const Timer2_ChangeStateTo2 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state2`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -399,7 +399,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo2(`http://localhost:5000/state2`, function (et) {
+                Timer2_ChangeStateTo2(`http://localhost:5000/state2`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -417,7 +417,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo3 = function (url, cb) {
+                const Timer2_ChangeStateTo3 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state3`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -428,7 +428,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo3(`http://localhost:5000/state3`, function (et) {
+                Timer2_ChangeStateTo3(`http://localhost:5000/state3`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -445,7 +445,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo4 = function (url, cb) {
+                const Timer2_ChangeStateTo4 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state4`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -456,7 +456,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo4(`http://localhost:5000/state4`, function (et) {
+                Timer2_ChangeStateTo4(`http://localhost:5000/state4`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -473,7 +473,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo5 = function (url, cb) {
+                const Timer2_ChangeStateTo5 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state5`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -484,7 +484,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo5(`http://localhost:5000/state5`, function (et) {
+                Timer2_ChangeStateTo5(`http://localhost:5000/state5`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }
@@ -500,7 +500,7 @@ class App extends React.Component {
               })
 
               if (JSON.parse(em.currentTarget.response).state.vacuum_cleaner_state !== self.state.vacuum_cleaner_state) {
-                const ChangeStateTo6 = function (url, cb) {
+                const Timer2_ChangeStateTo6 = function (url, cb) {
                   const xhr = new XMLHttpRequest()
                   xhr.open(`post`, `http://localhost:5000/state6`)
                   xhr.setRequestHeader('Content-Type', 'application/json')
@@ -511,7 +511,7 @@ class App extends React.Component {
                   xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
                 }
 
-                ChangeStateTo6(`http://localhost:5000/state6`, function (et) {
+                Timer2_ChangeStateTo6(`http://localhost:5000/state6`, function (et) {
                   console.log(JSON.parse(em.currentTarget.response))
                 })
               }

@@ -29,13 +29,16 @@ class SlideShow extends React.Component {
         let self = this
         console.log("VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV")
         if (this.props.SlideShowText === "Тихая уборка") {
-            this.props.UpdateSlideShowText("Интенсивная уборка")
+            this.props.UpdateSlideShowText("Зарядка")
         }
         else if (this.props.SlideShowText === "Стандартная уборка") {
             this.props.UpdateSlideShowText("Тихая уборка")
         }
         else if (this.props.SlideShowText === "Интенсивная уборка") {
             self.props.UpdateSlideShowText("Стандартная уборка")
+        }
+        else if (this.props.SlideShowText === "Зарядка") {
+            this.props.UpdateSlideShowText("Интенсивная уборка")
         }
     }
 
@@ -47,6 +50,9 @@ class SlideShow extends React.Component {
             this.props.UpdateSlideShowText("Интенсивная уборка")
         }
         else if (this.props.SlideShowText === "Интенсивная уборка") {
+            this.props.UpdateSlideShowText("Зарядка")
+        }
+        else if (this.props.SlideShowText === "Зарядка") {
             this.props.UpdateSlideShowText("Тихая уборка")
         }
     }

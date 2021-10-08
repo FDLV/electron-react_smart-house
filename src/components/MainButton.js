@@ -39,7 +39,7 @@ class MainButton extends React.Component {
 
         if (this.props.SlideShowText === "Тихая уборка") {
             this.props.UpdateText("тихая уборка")
-            const Pause2 = function (url, cb) {
+            const ChangeStateRequest1 = function (url, cb) {
                 const xhr = new XMLHttpRequest()
                 xhr.open(`post`, `http://localhost:5000/state1`)
                 xhr.setRequestHeader('Content-Type', 'application/json')
@@ -51,18 +51,67 @@ class MainButton extends React.Component {
                 //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
             }
     
-            Pause2(`http://localhost:5000/state1`, function (e) {
-                console.log("ok?????")
+            ChangeStateRequest1(`http://localhost:5000/state1`, function (e) {
                 self.props.StartTimer()
                 console.log(JSON.parse(e.currentTarget.response))
-                console.log("ok!!!!!")
             })
         }
         else if (this.props.SlideShowText === "Стандартная уборка") {
-
+            this.props.UpdateText("стандартная уборка")
+            const ChangeStateRequest2 = function (url, cb) {
+                const xhr = new XMLHttpRequest()
+                xhr.open(`post`, `http://localhost:5000/state2`)
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'dev.rightech.io');
+                    
+                xhr.addEventListener(`load`, cb);
+    
+                xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
+                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
+            }
+    
+            ChangeStateRequest2(`http://localhost:5000/state2`, function (e) {
+                self.props.StartTimer()
+                console.log(JSON.parse(e.currentTarget.response))
+            })
         }
         else if (this.props.SlideShowText === "Интенсивная уборка") {
-
+            this.props.UpdateText("интенсивная уборка")
+            const ChangeStateRequest3 = function (url, cb) {
+                const xhr = new XMLHttpRequest()
+                xhr.open(`post`, `http://localhost:5000/state3`)
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'dev.rightech.io');
+                    
+                xhr.addEventListener(`load`, cb);
+    
+                xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
+                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
+            }
+    
+            ChangeStateRequest3(`http://localhost:5000/state3`, function (e) {
+                self.props.StartTimer()
+                console.log(JSON.parse(e.currentTarget.response))
+            })
+        }
+        else if (this.props.SlideShowText === "Зарядка") {
+            this.props.UpdateText("зарядка")
+            const ChangeStateRequest4 = function (url, cb) {
+                const xhr = new XMLHttpRequest()
+                xhr.open(`post`, `http://localhost:5000/state4`)
+                xhr.setRequestHeader('Content-Type', 'application/json')
+                xhr.setRequestHeader('Access-Control-Allow-Origin', 'dev.rightech.io');
+                    
+                xhr.addEventListener(`load`, cb);
+    
+                xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
+                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
+            }
+    
+            ChangeStateRequest4(`http://localhost:5000/state4`, function (e) {
+                self.props.StartTimer()
+                console.log(JSON.parse(e.currentTarget.response))
+            })
         }
     }
 
