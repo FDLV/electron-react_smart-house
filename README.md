@@ -19,3 +19,4 @@ my experiments with rightech.io<br/>
 И у нас появляется node_modules<br/>
 ![изображение](https://user-images.githubusercontent.com/52961821/132913822-ef017cf3-422e-4ee2-854c-c42857f87f24.png)<br/>
 9. В терминале пишем "npm run go" (без кавычек)
+10. Чтобы авторизоваться, вы должны скинуть мне свою почту, с которой вы регались в rightech.io, чтобы я вас добавил. После добавления, по идее, вы сможете авторизоваться и зайти в прогу. После авторизации необходимо запустить [скрипт](https://github.com/FDLV/smart-vacuum_cleaner-script) 
