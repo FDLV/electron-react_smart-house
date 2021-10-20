@@ -13,7 +13,7 @@ class MainButton extends React.Component {
         let self = this
         self.props.StopTimer()
         self.props.PlayPause()
-        self.props.UpdateCharging()
+        self.props.UpdateCharging(false)
         self.props.UpdateText("выключен")
         const Pause = function (url, cb) {
             const xhr = new XMLHttpRequest()
@@ -97,6 +97,7 @@ class MainButton extends React.Component {
         }
         else if (this.props.SlideShowText === "Зарядка") {
             this.props.UpdateText("зарядка")
+            self.props.UpdateCharging(true)
             const ChangeStateRequest4 = function (url, cb) {
                 const xhr = new XMLHttpRequest()
                 xhr.open(`post`, `http://localhost:5000/state4`)
