@@ -1,11 +1,5 @@
 import React from 'react';
 
-const MainComponent = {
-    height: "32px",
-    fontSize: "24px",
-    textAlign: "center"
-}
-
 class Battery extends React.Component {
     render() {
         if (this.props.battery < 25) {

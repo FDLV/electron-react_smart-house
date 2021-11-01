@@ -7,14 +7,17 @@ class MainButton extends React.Component {
         this.state = {    
             
           }
+          this.Play = this.Play.bind(this)    
+
     }
 
     ClickPause() {
         let self = this
-        self.props.StopTimer()
+        //self.props.StopTimer()
         self.props.PlayPause()
-        self.props.UpdateCharging(false)
+        //self.props.UpdateCharging(false)
         self.props.UpdateText("выключен")
+        this.props.UpdateVacuum_cleaner_state(6)   
         const Pause = function (url, cb) {
             const xhr = new XMLHttpRequest()
             xhr.open(`post`, `http://localhost:5000/state6`)
@@ -34,12 +37,12 @@ class MainButton extends React.Component {
 
     Play() {
         let self = this
-
+        //self.props.StartTimer()
         self.props.PlayPause()
-        //взять данные из slideshow
 
         if (this.props.SlideShowText === "Тихая уборка") {
             this.props.UpdateText("тихая уборка")
+            this.props.UpdateVacuum_cleaner_state(1)        
             const ChangeStateRequest1 = function (url, cb) {
                 const xhr = new XMLHttpRequest()
                 xhr.open(`post`, `http://localhost:5000/state1`)
@@ -49,16 +52,16 @@ class MainButton extends React.Component {
                 xhr.addEventListener(`load`, cb);
     
                 xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
-                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
             }
     
             ChangeStateRequest1(`http://localhost:5000/state1`, function (e) {
-                self.props.StartTimer()
+                //self.props.StartTimer()
                 console.log(JSON.parse(e.currentTarget.response))
             })
         }
         else if (this.props.SlideShowText === "Стандартная уборка") {
             this.props.UpdateText("стандартная уборка")
+            this.props.UpdateVacuum_cleaner_state(2)   
             const ChangeStateRequest2 = function (url, cb) {
                 const xhr = new XMLHttpRequest()
                 xhr.open(`post`, `http://localhost:5000/state2`)
@@ -68,16 +71,16 @@ class MainButton extends React.Component {
                 xhr.addEventListener(`load`, cb);
     
                 xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
-                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
             }
     
             ChangeStateRequest2(`http://localhost:5000/state2`, function (e) {
-                self.props.StartTimer()
+                //self.props.StartTimer()
                 console.log(JSON.parse(e.currentTarget.response))
             })
         }
         else if (this.props.SlideShowText === "Интенсивная уборка") {
             this.props.UpdateText("интенсивная уборка")
+            this.props.UpdateVacuum_cleaner_state(3)   
             const ChangeStateRequest3 = function (url, cb) {
                 const xhr = new XMLHttpRequest()
                 xhr.open(`post`, `http://localhost:5000/state3`)
@@ -87,16 +90,16 @@ class MainButton extends React.Component {
                 xhr.addEventListener(`load`, cb);
     
                 xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
-                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
             }
     
             ChangeStateRequest3(`http://localhost:5000/state3`, function (e) {
-                self.props.StartTimer()
+                //self.props.StartTimer()
                 console.log(JSON.parse(e.currentTarget.response))
             })
         }
         else if (this.props.SlideShowText === "Зарядка") {
             this.props.UpdateText("зарядка")
+            this.props.UpdateVacuum_cleaner_state(4)   
             self.props.UpdateCharging(true)
             const ChangeStateRequest4 = function (url, cb) {
                 const xhr = new XMLHttpRequest()
@@ -107,11 +110,10 @@ class MainButton extends React.Component {
                 xhr.addEventListener(`load`, cb);
     
                 xhr.send(JSON.stringify({token: localStorage.getItem('token')}))
-                //поменять анимацию (типо загрузка или ожидание овтета сервера хз)
             }
     
             ChangeStateRequest4(`http://localhost:5000/state4`, function (e) {
-                self.props.StartTimer()
+                //self.props.StartTimer()
                 console.log(JSON.parse(e.currentTarget.response))
             })
         }

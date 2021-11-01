@@ -59,7 +59,7 @@ class Main extends React.Component {
                     </div>
                     <div style={VacuumCleanerButton}>
                         <button style={RoundTransparentButton}>
-                            <MainButton UpdateCharging={this.props.UpdateCharging} PlayPause={this.props.PlayPause} UpdateText={this.props.UpdateText} SlideShowText={this.props.SlideShowText} StartTimer={this.props.StartTimer} StopTimer={this.props.StopTimer} mode={this.props.PlayButton}/>
+                            <MainButton UpdateVacuum_cleaner_state={this.props.UpdateVacuum_cleaner_state} UpdateCharging={this.props.UpdateCharging} PlayPause={this.props.PlayPause} UpdateText={this.props.UpdateText} SlideShowText={this.props.SlideShowText} StartTimer={this.props.StartTimer} StopTimer={this.props.StopTimer} mode={this.props.PlayButton}/>
                         </button>
                     </div>
                     <div style={ChooseState}>
@@ -78,7 +78,7 @@ class Main extends React.Component {
                     </div>
                     <div style={VacuumCleanerButton}>
                         <button style={RoundTransparentButton}>
-                            <MainButton UpdateCharging={this.props.UpdateCharging} PlayPause={this.props.PlayPause} UpdateText={this.props.UpdateText} SlideShowText={this.props.SlideShowText} StartTimer={this.props.StartTimer} StopTimer={this.props.StopTimer} mode={this.props.PlayButton}/>
+                            <MainButton UpdateVacuum_cleaner_state={this.props.UpdateVacuum_cleaner_state} UpdateCharging={this.props.UpdateCharging} PlayPause={this.props.PlayPause} UpdateText={this.props.UpdateText} SlideShowText={this.props.SlideShowText} StartTimer={this.props.StartTimer} StopTimer={this.props.StopTimer} mode={this.props.PlayButton}/>
                         </button>
                     </div>
                     <div style={ChooseState}>
