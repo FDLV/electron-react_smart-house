@@ -22,11 +22,11 @@ appEX.post("/", async(req, res) => {
         password: password
       }).then(response => {
         //console.log(response.data)
+        // console.log("/ ok")
         res.send(response.data)
       }).catch(error => {
-        //console.log("--------------------------")
         //console.log(error.response.data)
-        //console.log("--------------------------")
+        // console.log("/ err")
         res.send(error.response.data)
     })
 })
@@ -41,9 +41,13 @@ appEX.post("/object", async(req, res) => {
 
   axios.get(`https://dev.rightech.io/api/v1/objects/613a1a5f5dab3700105b56e1`).then(response => {
     //console.log(response.data)
+    // console.log("/object ok")
+
     res.send(response.data)
   }).catch(error => {
-    console.log(error)
+    //console.log(error)
+    // console.log("/object err")
+
     res.send(error.response.data)
   })
 })

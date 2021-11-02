@@ -328,6 +328,7 @@ class App extends React.Component {
   
   componentDidMount() {
       let self = this
+      
     console.log(localStorage.getItem('token'))
     
     if (localStorage.getItem('token') !== "") {
@@ -750,6 +751,7 @@ class App extends React.Component {
   Authorisation() {
     let self = this
     console.log("Авторизация")
+    console.log(localStorage.getItem('token'))
     self.CheckToken()
 
     console.log(localStorage.getItem('token'))
@@ -763,7 +765,6 @@ class App extends React.Component {
       let password = document.getElementById("password").value;
 
       xhr.addEventListener(`load`, cb);
-
       xhr.send(JSON.stringify({login: login, password: password}))
     }
 
