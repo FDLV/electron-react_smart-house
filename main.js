@@ -6,7 +6,6 @@ const axios = require('axios');
 const express = require("express");
 const appEX = express();
 const cors = require("cors");
-const { response } = require('express');
 
 appEX.use(cors());
 appEX.use(express.json());

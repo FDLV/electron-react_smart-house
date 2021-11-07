@@ -61,8 +61,6 @@ class App extends React.Component {
 
     }
 
-    this.ClickDown = this.ClickDown.bind(this)
-    this.ClickUp = this.ClickUp.bind(this)
     this.Authorisation = this.Authorisation.bind(this)
     this.CheckToken = this.CheckToken.bind(this)
     this.PlayPause = this.PlayPause.bind(this)
@@ -144,7 +142,7 @@ class App extends React.Component {
               }
 
               Timer1_ChangeStateTo1(`http://localhost:5000/state1`, function (et) {
-                console.log(JSON.parse(em.currentTarget.response))
+                console.log(JSON.parse(et.currentTarget.response))
               })
             }
             else {
@@ -179,7 +177,7 @@ class App extends React.Component {
               }
 
               Timer1_ChangeStateTo2(`http://localhost:5000/state2`, function (et) {
-                console.log(JSON.parse(em.currentTarget.response))
+                console.log(JSON.parse(et.currentTarget.response))
               })
             }
 
@@ -209,7 +207,7 @@ class App extends React.Component {
               }
 
               Timer1_ChangeStateTo3(`http://localhost:5000/state3`, function (et) {
-                console.log(JSON.parse(em.currentTarget.response))
+                console.log(JSON.parse(et.currentTarget.response))
               })
             }
 
@@ -238,7 +236,7 @@ class App extends React.Component {
               }
 
               Timer1_ChangeStateTo4(`http://localhost:5000/state4`, function (et) {
-                console.log(JSON.parse(em.currentTarget.response))
+                console.log(JSON.parse(et.currentTarget.response))
               })
             }
 
@@ -267,7 +265,7 @@ class App extends React.Component {
               }
 
               Timer1_ChangeStateTo5(`http://localhost:5000/state5`, function (et) {
-                console.log(JSON.parse(em.currentTarget.response))
+                console.log(JSON.parse(et.currentTarget.response))
               })
             }
 
@@ -296,7 +294,7 @@ class App extends React.Component {
               }
 
               Timer1_ChangeStateTo6(`http://localhost:5000/state6`, function (et) {
-                console.log(JSON.parse(em.currentTarget.response))
+                console.log(JSON.parse(et.currentTarget.response))
               })
             }
             else {
@@ -400,7 +398,7 @@ class App extends React.Component {
                  }
  
                  Timer2_ChangeStateTo1(`http://localhost:5000/state6`, function (et) {
-                   console.log(JSON.parse(em.currentTarget.response))
+                   console.log(JSON.parse(et.currentTarget.response))
                  })
 
               }
@@ -427,7 +425,7 @@ class App extends React.Component {
                  }
  
                  Timer2_ChangeStateTo1(`http://localhost:5000/state1`, function (et) {
-                   console.log(JSON.parse(em.currentTarget.response))
+                   console.log(JSON.parse(et.currentTarget.response))
                  })
               }
             }
@@ -456,7 +454,7 @@ class App extends React.Component {
                  }
  
                  Timer2_ChangeStateTo1(`http://localhost:5000/state6`, function (et) {
-                   console.log(JSON.parse(em.currentTarget.response))
+                   console.log(JSON.parse(et.currentTarget.response))
                  })
 
               }
@@ -482,7 +480,7 @@ class App extends React.Component {
                 }
 
                 Timer2_ChangeStateTo2(`http://localhost:5000/state2`, function (et) {
-                  console.log(JSON.parse(em.currentTarget.response))
+                  console.log(JSON.parse(et.currentTarget.response))
                 })
               }
             }
@@ -510,7 +508,7 @@ class App extends React.Component {
                  }
  
                  Timer2_ChangeStateTo1(`http://localhost:5000/state6`, function (et) {
-                   console.log(JSON.parse(em.currentTarget.response))
+                   console.log(JSON.parse(et.currentTarget.response))
                  })
 
 
@@ -536,7 +534,7 @@ class App extends React.Component {
                 }
 
                 Timer2_ChangeStateTo3(`http://localhost:5000/state3`, function (et) {
-                  console.log(JSON.parse(em.currentTarget.response))
+                  console.log(JSON.parse(et.currentTarget.response))
                 })
               }
             }
@@ -564,7 +562,7 @@ class App extends React.Component {
                 }
 
                 Timer2_ChangeStateTo4(`http://localhost:5000/state4`, function (et) {
-                  console.log(JSON.parse(em.currentTarget.response))
+                  console.log(JSON.parse(et.currentTarget.response))
                 })
 
 
@@ -593,7 +591,7 @@ class App extends React.Component {
                 }
 
                 Timer2_ChangeStateTo4(`http://localhost:5000/state6`, function (et) {
-                  console.log(JSON.parse(em.currentTarget.response))
+                  console.log(JSON.parse(et.currentTarget.response))
                 })
 
 
@@ -626,7 +624,7 @@ class App extends React.Component {
                 }
 
                 Timer2_ChangeStateTo5(`http://localhost:5000/state5`, function (et) {
-                  console.log(JSON.parse(em.currentTarget.response))
+                  console.log(JSON.parse(et.currentTarget.response))
                 })
 
 
@@ -653,7 +651,7 @@ class App extends React.Component {
                 }
 
                 Timer2_ChangeStateTo6(`http://localhost:5000/state6`, function (et) {
-                  console.log(JSON.parse(em.currentTarget.response))
+                  console.log(JSON.parse(et.currentTarget.response))
                 })
 
 
@@ -802,15 +800,6 @@ UpdateSlideShowText(value) {
 }
 
 
-
-
-  ClickDown() {
-    this.setState({ ColorBackground: "orange" });
-  }
-
-  ClickUp() {
-    this.setState({ ColorBackground: "red" });
-  }
 
   render() {
     console.log(this.state.auth)
